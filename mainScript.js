@@ -4,10 +4,10 @@ function getComputerChoice() {
     return playOptions[randNum];
 }
 
-function singleRound(playerSelection, computerSelection) {
+function playRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase();
     let result;
-    
+
     if (playerSelection === computerSelection) {return "It's a tie";}
 
     else if (playerSelection == "rock" && computerSelection == "paper") {
@@ -34,3 +34,14 @@ function singleRound(playerSelection, computerSelection) {
             
     else {return "I don't know what is going on :-(";}
 }
+
+function game() {
+    for (let i = 0; i <5; i++) {
+        playerSelection = prompt("Juega!", "rock");
+        computerSelection = getComputerChoice();
+        console.log(playRound(playerSelection, computerSelection));
+
+    }
+}
+
+game();
