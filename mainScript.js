@@ -143,14 +143,14 @@ function endGame() {
     if (score1 == 5) {
         gameState = "Happy"
         greet = document.querySelector("#greeting");
-        greet.textContent = "You saved us :-)"
+        greet.textContent = "You are awesome :-)"
         greet.style = "background-color: cyan;"
         document.querySelector("*").style = "background-color: cyan;";
         }
     else {
         gameState = "Sad"
         greet = document.querySelector("#greeting");
-        greet.textContent = "You killed us. F##k you."
+        greet.textContent = "Looser!"
         greet.style = "background-color: Black;"
         document.querySelector("*").style = "background-color: black;";
     }
