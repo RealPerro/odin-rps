@@ -128,6 +128,7 @@ function game() {
     gameState = "Playing";
     greet = document.querySelector("#greeting");
     greet.textContent = "May the force be with you.";
+    greet.style = "background-color: yellow;"
     console.log(`you have ${score1} points`)
 
     scoreOne.textContent = `Score: ${score1}`;    
@@ -143,12 +144,14 @@ function endGame() {
         gameState = "Happy"
         greet = document.querySelector("#greeting");
         greet.textContent = "You saved us :-)"
+        greet.style = "background-color: cyan;"
         document.querySelector("*").style = "background-color: cyan;";
         }
     else {
         gameState = "Sad"
         greet = document.querySelector("#greeting");
         greet.textContent = "You killed us. F##k you."
+        greet.style = "background-color: Black;"
         document.querySelector("*").style = "background-color: black;";
     }
 }
