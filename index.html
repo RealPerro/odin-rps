@@ -10,32 +10,33 @@
 </head>
 <body>
     <div class = "header">
-        <p>The world's destiny is in your hands!</p>
+        <p id="greeting">The world's destiny is in your hands!</p>
     </div>
 
     <div class = "playArea">
         <div class = "player">
             <div>Player</div>
-            <div>score</div>
+            <div id="score1">score</div>
             <div class = "weapons human">
-                <button>&#9994;&#127997;</button>
-                <button>&#9995;&#127997; </button>
-                <button>&#9996;&#127997; </button>
+                <button id = "rock"    >&#9994;&#127997;</button>
+                <button id = "paper"   >&#9995;&#127997; </button>
+                <button id = "scissors" >&#9996;&#127997; </button>
             </div>
         </div>
     
-    <div class = "battlefield">
-        <button class = "UI">Start Battle</button>
-        <button class = "UI">Reset Score</button>
-    </div>
+        <div class = "battlefield">
+            <button class = "UI" id = "restart">Restart Battle</button>
+            <div id="commentary"></div>
+        </div>
+
 
         <div class = "Player">
             <div>Machine</div>
-            <div>score</div>
-            <div class = "weapons">
-                <button>&#x1faa8;</button>
-                <button>&#128220;</button>
-                <button>&#x1f6e0;</button>
+            <div id="score2">score</div>
+            <div class = "weapons computer">
+                <button id = "rock"    >&#x1faa8;</button>
+                <button id = "paper"   >&#128220;</button>
+                <button id = "scissors">&#x1f6e0;</button>
             </div>  
     </div>
 </body>

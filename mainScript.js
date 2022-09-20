@@ -1,47 +1,155 @@
+let score1 = 0;
+let score2 = 0;
+let gameState = "not started";
+
+const scoreOne = document.querySelector("#score1");
+const scoreTwo = document.querySelector("#score2");
+
+greet = document.querySelector("#greeting");
+greet.textContent = "Are yoy ready for battle? The world needs You!"
+
+startButton = document.querySelector("#restart");
+startButton.addEventListener("click", game);
+
+rockButton = document.querySelector("#rock");
+rockButton.addEventListener("click", playRound);
+
+paperButton = document.querySelector("#paper");
+paperButton.addEventListener("click", playRound);
+
+scissorsButton = document.querySelector("#scissors");
+scissorsButton.addEventListener("click", playRound);
+
+scoreOne.textContent = `Score: ${score1}`;
+scoreTwo.textContent = `Score: ${score2}`;
+
+game()
+
 function getComputerChoice() {
     let randNum = parseInt(Math.random()*3);
     const playOptions = ["rock", "paper", "scissors"]
     return playOptions[randNum];
 }
 
-function playRound(playerSelection, computerSelection) {
-    playerSelection = playerSelection.toLowerCase();
-    let result;
-
-    if (playerSelection === computerSelection) {return "It's a tie.";}
-
-    else if (playerSelection == "rock" && computerSelection == "paper") {
-        return `You lose!, ${computerSelection} beats ${playerSelection}.`;}
+function playRound(e) {
     
-    else if (playerSelection == "rock" && computerSelection == "scissors") {
-        return `You win!, ${computerSelection} looses to ${playerSelection}.`;}
+    if (gameState == "Playing") {
+        playerSelection = `${this.id}`;
+        this.classList.add("changed");
+        this.classList.add("played");
+        const otherTimeout = setTimeout(resetClass, 800);
         
-    else if (playerSelection == "paper" && computerSelection == "scissors") {
-        result = `You lose!, ${computerSelection} beats ${playerSelection}.`;
-        return result;}
+        computerSelection = getComputerChoice()
+        const computerPlay = document.querySelector(`.computer > #${computerSelection}`)
+        computerPlay.classList.add("played");
 
-    else if (playerSelection == "paper" && computerSelection == "rock") {
-        result = `You win!, ${computerSelection} looses to ${playerSelection}.`;
-        return result;}
+        console.log(playerSelection)
+        console.log(computerSelection)
+        let result;
 
-    else if (playerSelection == "scissors" && computerSelection == "rock") {
-        result = `You lose!, ${computerSelection} beats ${playerSelection}.`;
-        return result;}
+        if (playerSelection === computerSelection) {result = "It's a tie.";}
 
-    else if (playerSelection == "scissors" && computerSelection == "paper") {
-        result = `You win!, ${computerSelection} looses to ${playerSelection}.`;
-        return result;}
+        else if (playerSelection == "rock" && computerSelection == "paper") {
+            score2 +=1;
+            scoreTwo.classList.add("changed");
+            result = `You lose!, ${computerSelection} beats ${playerSelection}.`;}
+        
+        else if (playerSelection == "rock" && computerSelection == "scissors") {
+            score1 +=1;
+            scoreOne.classList.add("changed");
+            result = `You win!, ${computerSelection} looses to ${playerSelection}.`;}
             
-    else {return "I don't know what is going on :-(";}
+        else if (playerSelection == "paper" && computerSelection == "scissors") {
+            score2 +=1;
+            scoreTwo.classList.add("changed");
+            result = `You lose!, ${computerSelection} beats ${playerSelection}.`;
+            }
+
+        else if (playerSelection == "paper" && computerSelection == "rock") {
+            score1 +=1;
+            scoreOne.classList.add("changed");
+            result = `You win!, ${computerSelection} looses to ${playerSelection}.`;
+            }
+
+        else if (playerSelection == "scissors" && computerSelection == "rock") {
+            score2 +=1;
+            scoreTwo.classList.add("changed");
+            result = `You lose!, ${computerSelection} beats ${playerSelection}.`;
+            }
+
+        else if (playerSelection == "scissors" && computerSelection == "paper") {
+            score1 +=1;
+            scoreOne.classList.add("changed");
+            result = `You win!, ${computerSelection} looses to ${playerSelection}.`;
+            }
+                
+        else {result = "I don't know what is going on :-(";}
+        
+        scoreOne.textContent = `Score: ${score1}`;
+        scoreTwo.textContent = `Score: ${score2}`;
+        
+        const myTimeout = setTimeout(resetClass, 500);
+        
+        if (score1 == 5 || score2 == 5) {
+            endGame();
+        }
+
+        comment = document.querySelector("#commentary");
+        comment.textContent = `${result}`;
+        comment.classList.add("changed");  
+        console.log(`the result is ${result}`);
+        
+        return result;
+}
 }
 
-function game(n=1000) {
-    for (let i = 0; i <n; i++) {
-        playerSelection = prompt("Juega!", "rock");
-        computerSelection = getComputerChoice();
-        console.log(playRound(playerSelection, computerSelection));
+function resetClass() {
+    scoreOne.classList.remove("changed");
+    scoreTwo.classList.remove("changed");
+    comment.classList.remove("changed");
 
+    scoreOne.classList.remove("played");
+    scoreTwo.classList.remove("played");
+    comment.classList.remove("played");
+    
+    theButtons = document.querySelectorAll("button");
+    theButtons.forEach(element => {
+        element.classList.remove("changed");
+        element.classList.remove("played");
+    });
+
+}
+
+
+function game() {
+    console.log("game started");
+    score1=0;
+    score2=0;
+    gameState = "Playing";
+    greet = document.querySelector("#greeting");
+    greet.textContent = "May the force be with you.";
+    console.log(`you have ${score1} points`)
+
+    scoreOne.textContent = `Score: ${score1}`;    
+    scoreTwo.textContent = `Score: ${score2}`;
+    document.querySelector("*").style = "background-color: yellow;";
+
+    comment = document.querySelector("#commentary");
+    comment.textContent = " ";
+}
+
+function endGame() {
+    if (score1 == 5) {
+        gameState = "Happy"
+        greet = document.querySelector("#greeting");
+        greet.textContent = "You saved us :-)"
+        document.querySelector("*").style = "background-color: cyan;";
+        }
+    else {
+        gameState = "Sad"
+        greet = document.querySelector("#greeting");
+        greet.textContent = "You killed us. F##k you."
+        document.querySelector("*").style = "background-color: black;";
     }
 }
 
-//game();
