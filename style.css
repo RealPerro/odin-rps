@@ -1,0 +1,49 @@
+* {
+    background-color: yellow;
+    font-size: x-large;
+    font-family: fantasy;
+    font-weight: bold;
+}
+
+.header {
+    color:red;
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+.playArea {
+    display: flex;
+    flex: 1;
+    justify-content:space-around;
+    align-items: center;
+}
+
+.battlefield {
+    border: 10px;
+    border-color: black;
+    border-style: double;
+    height: 40%;
+    width: 40%;
+    min-width: 400px;
+    min-height: 400px;
+    border-radius: 20px;
+}
+
+.weapons {
+    display:flex;
+    align-items:center;
+    justify-content: flex-start;
+    align-items: center;
+    gap:20px;
+}
+
+button {
+    font-size: 100px;
+    height: 120px;
+    width: 120px;
+    border-radius: 20px;
+}
+
+.human>button {
+    background-color: aqua;
+}

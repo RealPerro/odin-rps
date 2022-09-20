@@ -35,8 +35,8 @@ function playRound(playerSelection, computerSelection) {
     else {return "I don't know what is going on :-(";}
 }
 
-function game() {
-    for (let i = 0; i <5; i++) {
+function game(n=1000) {
+    for (let i = 0; i <n; i++) {
         playerSelection = prompt("Juega!", "rock");
         computerSelection = getComputerChoice();
         console.log(playRound(playerSelection, computerSelection));
@@ -44,4 +44,4 @@ function game() {
     }
 }
 
-game();
+//game();
