@@ -3,6 +3,7 @@
     font-size: x-large;
     font-family: fantasy;
     font-weight: bold;
+    transition:1s;
 }
 
 .header {
@@ -27,6 +28,11 @@
     min-width: 400px;
     min-height: 400px;
     border-radius: 20px;
+    display:flex;
+    gap:20px;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .weapons {
@@ -42,8 +48,22 @@ button {
     height: 120px;
     width: 120px;
     border-radius: 20px;
+    background-color: gold;
+    box-shadow: 5mm;
 }
 
-.human>button {
-    background-color: aqua;
+.human>button:hover {
+    transform: scale(1.1);
+    background-color: red;
+    transform: rotate(5deg);
+}
+
+.UI {
+    font-size: x-large;
+}
+
+.UI:hover {
+    transform: scale(1.1);
+    background-color: lightskyblue;
+    transform: rotate(5deg);
 }
